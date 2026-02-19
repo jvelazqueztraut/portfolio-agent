@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #110f1a;
+  --foreground: #ffffff;
+  --background-light: #1a1726;
+  --text-light: #f5f5f5;
+  --choice-text-dark: #0A211F;
+  --choice-bg-selected: #a58dfd;
+  --choice-bg-default: #47eefd;
+  --choice-bg-closing: #183d8f;
+  --z-loading: 9999;
+  --z-modal: 1000;
+  --z-dropdown: 100;
+  --z-canvas: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
