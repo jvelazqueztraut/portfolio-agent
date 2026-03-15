@@ -220,22 +220,24 @@ export default function LandingPage() {
       />
 
       {/* Current Phase Display - bottom right corner */}
-      <AnimatePresence>
-        {agentOutput && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-4 right-4 z-10 pointer-events-none"
-          >
-            <div className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium">
-              {agentOutput.phase}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+      {process.env.NEXT_PUBLIC_IS_DEV === 'true' && (
+        <AnimatePresence>
+          {agentOutput && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+              className="fixed bottom-4 right-4 z-10 pointer-events-none"
+            >
+              <div className="px-3 py-1 bg-black/40 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                {agentOutput.phase.split('_')[0]}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
+      
       <ThreeScene
         ref={threeSceneRef}
         talkingTime={talkingTime}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/sections/Header';
+import Footer from '@/sections/Footer';
 import { URLParamsProvider } from '@/contexts/URLParamsContext';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <URLParamsProvider>
           <Header />
           {children}
+          <Footer />
         </URLParamsProvider>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />

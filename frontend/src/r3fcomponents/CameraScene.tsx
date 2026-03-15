@@ -27,15 +27,15 @@ export type CameraSceneRef = {
 };
 
 const DEFAULT_CAMERA_ZOOM = 2;
-const DEFAULT_CAMERA_POSITION_PORTRAIT: [number, number, number] = [0, 1.25, 3];
-const DEFAULT_CAMERA_TARGET_PORTRAIT: [number, number, number] = [0, 1.25, 0];
-const DEFAULT_CAMERA_POSITION_LANDSCAPE: [number, number, number] = [0.5, 1.25, 3];
-const DEFAULT_CAMERA_TARGET_LANDSCAPE: [number, number, number] = [0.5, 1.25, 0];
+const DEFAULT_CAMERA_POSITION_PORTRAIT: [number, number, number] = [0, 1.55, 3];
+const DEFAULT_CAMERA_TARGET_PORTRAIT: [number, number, number] = [0, 1.55, 0];
+const DEFAULT_CAMERA_POSITION_LANDSCAPE: [number, number, number] = [0.5, 1.55, 3];
+const DEFAULT_CAMERA_TARGET_LANDSCAPE: [number, number, number] = [0.5, 1.55, 0];
 const DEFAULT_SMOOTH_TIME = 2.5;
 
 const DISABLED_CAMERA_ZOOM = 10;
-const DISABLED_CAMERA_POSITION: [number, number, number] = [0, 1.25, 20];
-const DISABLED_CAMERA_TARGET: [number, number, number] = [0, 1.25, 0];
+const DISABLED_CAMERA_POSITION: [number, number, number] = [0, 1.55, 20];
+const DISABLED_CAMERA_TARGET: [number, number, number] = [0, 1.55, 0];
 
 const CameraScene = forwardRef<CameraSceneRef>(
   (props, ref: React.Ref<CameraSceneRef>) => {

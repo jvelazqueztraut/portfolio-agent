@@ -13,41 +13,26 @@ import { GLTF } from 'three-stdlib';
 
 type GLTFResult = GLTF & {
   nodes: {
-    Arms: THREE.SkinnedMesh
-    BackPack: THREE.SkinnedMesh
-    Boots_A: THREE.SkinnedMesh
-    Boots_B: THREE.SkinnedMesh
-    Gloves_L: THREE.SkinnedMesh
-    Gloves_R: THREE.SkinnedMesh
-    Helmet: THREE.SkinnedMesh
-    Radio: THREE.SkinnedMesh
-    Shoes_A: THREE.SkinnedMesh
-    Shoes_B: THREE.SkinnedMesh
-    Torso: THREE.SkinnedMesh
-    Trousers: THREE.SkinnedMesh
-    mixamorigHips: THREE.Bone
+    Cube001: THREE.SkinnedMesh;
+    Cube001_1: THREE.SkinnedMesh;
+    Cube001_2: THREE.SkinnedMesh;
+    Sphere001: THREE.SkinnedMesh;
+    Sphere001_1: THREE.SkinnedMesh;
+    mixamorigHips: THREE.Bone;
   };
   materials: {
-    ['Apollo_11_SpaceSuit.1006']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1003']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1005']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.001']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1007']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.002']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1001']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1008']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.003']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.004']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1002']: THREE.MeshStandardMaterial
-    ['Apollo_11_SpaceSuit.1004']: THREE.MeshStandardMaterial
+    ['white.001']: THREE.MeshStandardMaterial;
+    ['gray.001']: THREE.MeshStandardMaterial;
+    ['flag.001']: THREE.MeshStandardMaterial;
+    ['transparent_mask.001']: THREE.MeshStandardMaterial;
   };
 };
 
 export type ActionName =
-  | 'Greeting'
-  | 'IdleBreathing'
-  | 'IdleLooking'
   | 'IdleStanding'
+  | 'IdleLooking'
+  | 'IdleBreathing'
+  | 'Greeting'
   | 'LookBehind'
   | 'TalkingAcknowledge'
   | 'TalkingOneHand'
@@ -73,10 +58,10 @@ export const AstronautModel = forwardRef<
   const group = useRef<THREE.Group>(null);
   const currentActionRef = useRef<string | null>(null);
   const { nodes, materials, animations } = useGLTF(
-    '/models/Astronaut_V3.glb'
+    '/models/Astronaut.glb'
   ) as unknown as GLTFResult;
   const { actions, mixer } = useAnimations<GLTFActions>(
-    animations as any,  
+    animations as any,
     group
   );
 
@@ -151,88 +136,50 @@ export const AstronautModel = forwardRef<
 
   return (
     <group ref={group} {...props} dispose={null}>
-    <group name="Scene">
-      <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-        <skinnedMesh
-          name="Arms"
-          geometry={nodes.Arms.geometry}
-          material={materials['Apollo_11_SpaceSuit.1006']}
-          skeleton={nodes.Arms.skeleton}
-        />
-        <skinnedMesh
-          name="BackPack"
-          geometry={nodes.BackPack.geometry}
-          material={materials['Apollo_11_SpaceSuit.1003']}
-          skeleton={nodes.BackPack.skeleton}
-        />
-        <skinnedMesh
-          name="Boots_A"
-          geometry={nodes.Boots_A.geometry}
-          material={materials['Apollo_11_SpaceSuit.1005']}
-          skeleton={nodes.Boots_A.skeleton}
-        />
-        <skinnedMesh
-          name="Boots_B"
-          geometry={nodes.Boots_B.geometry}
-          material={materials['Apollo_11_SpaceSuit.001']}
-          skeleton={nodes.Boots_B.skeleton}
-        />
-        <skinnedMesh
-          name="Gloves_L"
-          geometry={nodes.Gloves_L.geometry}
-          material={materials['Apollo_11_SpaceSuit.1007']}
-          skeleton={nodes.Gloves_L.skeleton}
-        />
-        <skinnedMesh
-          name="Gloves_R"
-          geometry={nodes.Gloves_R.geometry}
-          material={materials['Apollo_11_SpaceSuit.002']}
-          skeleton={nodes.Gloves_R.skeleton}
-        />
-        <skinnedMesh
-          name="Helmet"
-          geometry={nodes.Helmet.geometry}
-          material={materials['Apollo_11_SpaceSuit.1001']}
-          skeleton={nodes.Helmet.skeleton}
-        />
-        <skinnedMesh
-          name="Radio"
-          geometry={nodes.Radio.geometry}
-          material={materials['Apollo_11_SpaceSuit.1008']}
-          skeleton={nodes.Radio.skeleton}
-        />
-        <skinnedMesh
-          name="Shoes_A"
-          geometry={nodes.Shoes_A.geometry}
-          material={materials['Apollo_11_SpaceSuit.003']}
-          skeleton={nodes.Shoes_A.skeleton}
-        />
-        <skinnedMesh
-          name="Shoes_B"
-          geometry={nodes.Shoes_B.geometry}
-          material={materials['Apollo_11_SpaceSuit.004']}
-          skeleton={nodes.Shoes_B.skeleton}
-        />
-        <skinnedMesh
-          name="Torso"
-          geometry={nodes.Torso.geometry}
-          material={materials['Apollo_11_SpaceSuit.1002']}
-          skeleton={nodes.Torso.skeleton}
-        />
-        <skinnedMesh
-          name="Trousers"
-          geometry={nodes.Trousers.geometry}
-          material={materials['Apollo_11_SpaceSuit.1004']}
-          skeleton={nodes.Trousers.skeleton}
-        />
-        <primitive object={nodes.mixamorigHips} />
+      <group name="Scene">
+        <group name="Armature" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+          <group name="Body">
+            <skinnedMesh
+              name="Cube001"
+              geometry={nodes.Cube001.geometry}
+              material={materials['white.001']}
+              skeleton={nodes.Cube001.skeleton}
+            />
+            <skinnedMesh
+              name="Cube001_1"
+              geometry={nodes.Cube001_1.geometry}
+              material={materials['gray.001']}
+              skeleton={nodes.Cube001_1.skeleton}
+            />
+            <skinnedMesh
+              name="Cube001_2"
+              geometry={nodes.Cube001_2.geometry}
+              material={materials['flag.001']}
+              skeleton={nodes.Cube001_2.skeleton}
+            />
+          </group>
+          <group name="Helmet">
+            <skinnedMesh
+              name="Sphere001"
+              geometry={nodes.Sphere001.geometry}
+              material={materials['white.001']}
+              skeleton={nodes.Sphere001.skeleton}
+            />
+            <skinnedMesh
+              name="Sphere001_1"
+              geometry={nodes.Sphere001_1.geometry}
+              material={materials['transparent_mask.001']}
+              skeleton={nodes.Sphere001_1.skeleton}
+            />
+          </group>
+          <primitive object={nodes.mixamorigHips} />
+        </group>
       </group>
     </group>
-  </group>
   );
 });
 
-useGLTF.preload('/models/Astronaut_V3.glb');
+useGLTF.preload('/models/Astronaut.glb');
 
 AstronautModel.displayName = 'AstronautModel';
 

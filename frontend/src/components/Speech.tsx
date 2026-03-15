@@ -27,7 +27,7 @@ export default function Speech({
           ease: 'easeOut',
         }}
         className={`p-6 backdrop-blur-sm rounded-lg ${className}`}
-        style={{ backgroundColor: 'var(--background-light)' }}
+        style={{ backgroundColor: 'var(--background-light-80)' }}
       >
         <StreamingText
           text={text}

@@ -4,6 +4,7 @@
   --background: #110f1a;
   --foreground: #ffffff;
   --background-light: #1a1726;
+  --background-light-80: rgba(26, 23, 38, 0.8);
   --text-light: #f5f5f5;
   --choice-text-dark: #0A211F;
   --choice-bg-selected: #a58dfd;
