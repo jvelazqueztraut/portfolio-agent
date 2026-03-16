@@ -99,6 +99,19 @@ export default function LandingPage() {
     await sendMessage(`Start the experience. My name is ${userName.trim()}.`);
   }, [sessionId, sendMessage, userName, trackEvent]);
 
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        const isButtonEnabled =
+          sessionId && !isLoading && userName.trim() && !hasStarted;
+        if (isButtonEnabled) {
+          handleCTAClick();
+        }
+      }
+    },
+    [sessionId, isLoading, userName, hasStarted, handleCTAClick]
+  );
+
   const handleChoiceSelect = useCallback(
     async (choice: UserChoice) => {
       if (!sessionId) {
@@ -160,6 +173,7 @@ export default function LandingPage() {
                 type="text"
                 value={userName}
                 onChange={e => setUserName(e.target.value)}
+                onKeyDown={handleKeyDown}
                 placeholder="Enter your name"
                 disabled={hasStarted}
                 initial={{ opacity: 0, y: 10 }}

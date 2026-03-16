@@ -342,7 +342,7 @@ export const PlanetsScene = forwardRef<PlanetsSceneRef>(
         ChangeParticlesColor: button(() => changeParticlesColor()),
       }),
       Particles: folder({
-        particlesCount: { value: 100, min: 0, max: 100, step: 1 },
+        particlesCount: { value: 60, in: 0, max: 100, step: 1 },
         particlesSpeed: { value: 0.4, min: 0, max: 1, step: 0.1 },
       }),
     });
