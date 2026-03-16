@@ -57,15 +57,15 @@ def setup_agent_output_validator(agent: Agent) -> None:
     @agent.output_validator
     async def output_validator(ctx: RunContext, output) -> object:
         """Validate the agent output"""
-        # If the phase is P1_Landing, then CharacterCommand should be greeting
-        if output.phase == 'P1_Landing':
+        # If the phase is P1_Arrival, then CharacterCommand should be greeting
+        if output.phase == 'P1_Arrival':
             output.character_command = CharacterCommand(type='greeting')
-        # If the phase is P1_Landing, then CameraCommand should be enable_camera
-        if output.phase == 'P1_Landing':
+        # If the phase is P1_Arrival, then CameraCommand should be enable_camera
+        if output.phase == 'P1_Arrival':
             output.camera_command = CameraCommand(type='enable_camera')
-        # If the phase is P8_Closing, then CameraCommand should be disable_camera
+        # If the phase is P6_Closing, then CameraCommand should be disable_camera
         # Background and planets should be disabled before closing
-        elif output.phase == 'P8_Closing':
+        elif output.phase == 'P6_Closing':
             output.camera_command = CameraCommand(type='disable_camera')
             output.environment_commands = []
             output.environment_commands.append(EnvironmentCommand(type='disable_background'))
@@ -77,19 +77,19 @@ def setup_agent_output_validator(agent: Agent) -> None:
             # Get commands already in this output
             current_env_commands = {env_cmd.type for env_cmd in output.environment_commands}
             
-            # Check if enable_background should be added before P4_WhatIsImmersive
-            if output.phase == 'P4_WhatIsImmersive':
+            # Check if enable_background should be added before P4_SystemThinking
+            if output.phase == 'P4_SystemThinking':
                 if 'enable_background' not in ctx.deps.environment_commands_sent and 'enable_background' not in current_env_commands:
                     if len(output.environment_commands) < ENVIRONMENT_COMMANDS_MAX_LENGTH:
                         output.environment_commands.append(EnvironmentCommand(type='enable_background'))
             
-            # Check if enable_particle_effect should be added before P7_Interact
-            if output.phase == 'P7_Interact':
+            # Check if enable_particle_effect should be added before P5_InteractiveDemo
+            if output.phase == 'P5_InteractiveDemo':
                 if 'enable_particle_effect' not in ctx.deps.environment_commands_sent and 'enable_particle_effect' not in current_env_commands:
                     if len(output.environment_commands) < ENVIRONMENT_COMMANDS_MAX_LENGTH:
                         output.environment_commands.append(EnvironmentCommand(type='enable_particle_effect'))
-            # Check if enable_planets should be added before P7_Interact
-            if output.phase == 'P7_Interact':
+            # Check if enable_planets should be added before P5_InteractiveDemo
+            if output.phase == 'P5_InteractiveDemo':
                 if 'enable_planets' not in ctx.deps.environment_commands_sent and 'enable_planets' not in current_env_commands:
                     if len(output.environment_commands) < ENVIRONMENT_COMMANDS_MAX_LENGTH:
                         output.environment_commands.append(EnvironmentCommand(type='enable_planets'))

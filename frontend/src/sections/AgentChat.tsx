@@ -40,7 +40,7 @@ export default function AgentChat({
     setShowUserChoices(true);
   };
 
-  const variant = agentOutput?.phase === 'P8_Closing' ? 'closing' : 'default';
+  const variant = agentOutput?.phase === 'P6_Closing' ? 'closing' : 'default';
 
   if (!agentOutput) {
     return null;

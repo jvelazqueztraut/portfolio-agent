@@ -106,7 +106,7 @@ export default function LandingPage() {
         return;
       }
 
-      if (agentOutput?.phase === 'P8_Closing') {
+      if (agentOutput?.phase === 'P6_Closing') {
         if (choice.text.includes('velazqueztraut.com')) {
           trackEvent('close_link', {
             choice_text: choice.text,

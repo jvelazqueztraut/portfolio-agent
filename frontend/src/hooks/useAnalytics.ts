@@ -18,7 +18,7 @@ import {
  * // Type-safe event tracking
  * trackEvent('user_choice', {
  *   choice_text: 'Continue',
- *   current_phase: 'P1_Landing'
+ *   current_phase: 'P1_Arrival'
  * });
  * ```
  */

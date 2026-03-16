@@ -26,7 +26,7 @@ interface AgentState {
 export const useAgentStore = create<AgentState>((set, get) => ({
   // Initial state
   sessionId: null,
-  currentPhase: 'P1_Landing',
+  currentPhase: 'P1_Arrival',
   isLoading: false,
   error: null,
   agentOutput: null,

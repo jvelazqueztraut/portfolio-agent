@@ -1,14 +1,12 @@
 // Type definitions for backend API models
 
 export type Phase =
-  | 'P1_Landing'
-  | 'P2_Meet'
-  | 'P3_WhoIsJavier'
-  | 'P4_WhatIsImmersive'
-  | 'P5_WhyItMatters'
-  | 'P6_AI_Twist'
-  | 'P7_Interact'
-  | 'P8_Closing';
+  | 'P1_Arrival'
+  | 'P2_AboutJavier'
+  | 'P3_ProjectExplorer'
+  | 'P4_SystemThinking'
+  | 'P5_InteractiveDemo'
+  | 'P6_Closing';
 
 export type NextPhaseHint =
   | 'stay'

@@ -49,8 +49,8 @@ class SoundEffect(BaseModel):
 
 class AgentOutput(BaseModel):
     """Agent output model for agent to return to the user"""
-    phase: Literal["P1_Landing","P2_Meet","P3_WhoIsJavier","P4_WhatIsImmersive",
-        "P5_WhyItMatters","P6_AI_Twist","P7_Interact","P8_Closing"]
+    phase: Literal["P1_Arrival","P2_AboutJavier","P3_ProjectExplorer","P4_SystemThinking",
+        "P5_InteractiveDemo","P6_Closing"]
     readable_text: constr(strip_whitespace=True, min_length=READABLE_TEXT_MIN_LENGTH, max_length=READABLE_TEXT_MAX_LENGTH)
     next_phase_hint: Literal["stay","advance_on:user_choice","advance_on:goal_met"]
     user_choices: list[UserChoice] = Field(max_length=USER_CHOICES_MAX_LENGTH)
